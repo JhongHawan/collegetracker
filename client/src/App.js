@@ -9,6 +9,7 @@ import store from './store';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import CollegeTracker from './components/CollegeTracker';
 
 class App extends Component {
   render() {
@@ -18,7 +19,7 @@ class App extends Component {
           <AppNavbar />
           <Container>
             <ItemModal />
-            <ShoppingList />
+            <CollegeTracker />
           </Container>
         </div>
       </Provider>

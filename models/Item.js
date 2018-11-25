@@ -7,7 +7,19 @@ const ItemSchema = new Schema({
         type: String,
         required: true
     },
-    date: {
+    description: {
+        type: String,
+        required: false
+    }, 
+    rank: {
+        type: Number,
+        required: true 
+    },
+    decision: {
+        type: String,
+        required: true 
+    },
+    deadline: {
         type: Date,
         default: Date.now
     }

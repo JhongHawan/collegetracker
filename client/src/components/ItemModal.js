@@ -15,7 +15,11 @@ import { addItem } from '../actions/itemActions';
 class ItemModal extends Component { 
    state = {
       modal: false,
-      name: ''
+      name: '',
+      description: '',
+      rank: 1,
+      decision: 'Unknown',
+      deadline: Date.now 
    }
 
    toggle = () => {
@@ -31,8 +35,13 @@ class ItemModal extends Component {
    onSubmit = e => {
       e.preventDefault(); 
 
+      // Updates the state of each property to whatever is inputted on the new entry. 
       const newItem = {
-         name: this.state.name
+         name: this.state.name,
+         description: this.state.description,
+         rank: this.state.rank,
+         decision: this.state.decision,
+         deadline: this.state.deadline
       }
 
       // Add item via addItem action
@@ -46,25 +55,83 @@ class ItemModal extends Component {
       return(
          <div>
             <Button color="dark" style={{marginBottom: '2rem'}} onClick={this.toggle}>
-               Add Item
+               Add Entry
             </Button>
 
             <Modal
                isOpen={this.state.modal}
                toggle={this.toggle}
             >
-               <ModalHeader toggle={this.toggle}>Add To ShoppingList</ModalHeader>
+               <ModalHeader toggle={this.toggle}>Add To College List</ModalHeader>
                <ModalBody>
                   <Form onSubmit={this.onSubmit}>
                      <FormGroup>
-                        <Label for="item">Item</Label>
+                        <Label for="collegeName">College</Label>
                         <Input 
                            type="text"
                            name="name"
-                           id="item"
-                           placeholder="Add shopping item"
+                           id="collegeName"
+                           placeholder="College Name"
                            onChange={this.onChange}
                         />
+                        <Label 
+                           for="ranking"
+                           style={{marginTop: '2rem'}}
+                        >Ranking</Label>
+                        <Input
+                           type="select"
+                           name="rank"
+                           id="ranking"
+                           onChange={this.onChange}
+                        >   
+                           <option>1</option>
+                           <option>2</option>
+                           <option>3</option>
+                           <option>4</option>
+                           <option>5</option>
+                           <option>6</option>
+                           <option>7</option>
+                           <option>8</option>
+                           <option>9</option>
+                           <option>10</option>
+                        </Input>
+                        <Label 
+                           for="collegeDescription"
+                           style={{marginTop: '2rem'}}
+                        >Details</Label>
+                        <Input 
+                        // This name property is the same for all Input components so that we can
+                        // use the same onChange event handler.
+                           type="textarea"
+                           name="description"
+                           id="collegeDescription"
+                           onChange={this.onChange}
+                        />
+                        <Label 
+                           for="appDecision"
+                           style={{marginTop: '2rem'}}
+                        >Decision</Label>
+                        <Input
+                           type="select"
+                           name="decision"
+                           id="appDecision"
+                           onChange={this.onChange}
+                        > 
+                           <option>Accepted</option>
+                           <option>Unknown</option>
+                           <option>Rejected</option>
+                        </Input>
+                        <Label 
+                           for="appDeadline"
+                           style={{marginTop: '2rem'}}
+                        >Decision</Label>
+                        <Input
+                           type="text"
+                           name="deadline"
+                           id="appDeadline"
+                           placeholder="YYYY-MM-DD"
+                           onChange={this.onChange}
+                        /> 
                         <Button
                            color="dark"
                            style={{marginTop: '2rem'}}
