@@ -4,3 +4,6 @@ This application is based off of Brad Traversy's mern_shopping_list repository.
 The app was built with the MERN stack and implements Redux for state management.
 Reactstrap and react-transition-group were used for the front-end client side development. 
 
+## Heroku 
+The app is deployed on my heroku server, here's the link: https://pacific-dusk-74714.herokuapp.com/
+
